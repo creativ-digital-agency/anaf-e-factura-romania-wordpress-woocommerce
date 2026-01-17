@@ -1,4 +1,153 @@
 === e-Factura for WooCommerce ===
+Contribuitori: creativdigital
+
+Tag-uri: woocommerce, anaf, efactura, invoice, romania
+
+Versiune minimă necesară: 5.8
+
+Testat până la: 6.9
+
+Versiune stabilă: 1.0.2
+
+Versiune PHP necesară: 7.4
+
+Licență: GPLv2 sau ulterioară
+
+Licență URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Integrează WooCommerce cu sistemul ANAF e-Factura (SPV) din România. Generează facturi în format XML UBL 2.1 și le transmite direct către ANAF.
+
+== Descriere ==
+e-Factura for WooCommerce este un plugin gratuit și open-source care conectează magazinul tău WooCommerce direct la sistemul ANAF e-Factura (SPV - Spațiul Privat Virtual).
+
+Începând cu ianuarie 2024, toate tranzacțiile B2B din România necesită facturare electronică prin sistemul ANAF. Acest plugin automatizează întregul proces fără a necesita abonamente costisitoare la platforme SaaS terțe.
+
+= Caracteristici Principale =
+Integrare Directă ANAF - Conectare prin API-ul oficial OAuth2 folosind certificatul digital ANAF.
+
+Mod Auto-Pilot - Generare și trimitere automată a facturilor atunci când comenzile sunt marcate ca „Finalizate”.
+
+Generare XML UBL 2.1 - Creează facturi conforme cu standardul RO-CIUS (Romanian Core Invoice Usage Specification).
+
+Monitorizare Status - Verificări automate în fundal pentru statusul de validare al facturii de către ANAF.
+
+Descărcare Răspuns ANAF - Descarcă automat arhiva ZIP oficială semnată de ANAF.
+
+Câmpuri Checkout B2B - Adaugă câmpurile CUI/CIF, Nr. Reg. Com., IBAN și Sector în pagina de finalizare a comenzii.
+
+Mod Test - Suport pentru mediul Sandbox pentru testare înainte de punerea în funcțiune.
+
+Compatibil HPOS - Funcționează cu sistemul High-Performance Order Storage din WooCommerce.
+
+= Cum funcționează =
+Configurezi datele companiei (CUI, Nume Firmă).
+
+Înregistrezi aplicația pe portalul ANAF pentru a obține Client ID/Secret.
+
+Conectezi plugin-ul la ANAF folosind certificatul digital.
+
+Activezi modul Auto-Pilot sau generezi facturile manual din ecranul comenzii.
+
+Plugin-ul se ocupă de generarea XML-ului, încărcare, verificarea statusului și descărcarea răspunsului.
+
+= Cerințe =
+WooCommerce 5.0 sau superior.
+
+PHP 7.4 sau superior.
+
+Cont activ în SPV (Spațiul Privat Virtual) ANAF.
+
+Certificat digital calificat înregistrat la ANAF.
+
+Aplicație înregistrată în Portalul Dezvoltatori ANAF.
+
+= Documentație =
+Pentru instrucțiuni detaliate de configurare, vă rugăm să consultați:
+
+Ghid de Înregistrare ANAF OAuth
+
+Ghid Tehnic RO e-Factura
+
+= Suport =
+Acest plugin este dezvoltat și întreținut de Creativ Digital Agency.
+
+Pentru întrebări legate de suport, ne puteți contacta la: office@creativdigital.ro Răspundem tuturor solicitărilor în termen de 48 de ore în zilele lucrătoare.
+
+== Instalare ==
+Încarcă fișierele plugin-ului în /wp-content/plugins/e-factura-for-woocommerce/ sau instalează-l direct prin ecranul de module WordPress.
+
+Activează plugin-ul prin secțiunea „Module” (Plugins) din WordPress.
+
+Navighează la WooCommerce > RO e-Factura pentru configurare.
+
+= Configurare Aplicație ANAF =
+Mergi la Portalul ANAF > Dezvoltatori Aplicații > Adaugă aplicație.
+
+Setează Redirect URI la: https://siteultau.ro/wp-admin/admin.php?page=wc-efactura-ro
+
+Copiază valorile generate pentru Client ID și Client Secret.
+
+Introdu aceste date în setările plugin-ului și apasă „Save”.
+
+Apasă „Connect to ANAF” și autorizează conexiunea folosind certificatul digital.
+
+== Întrebări Frecvente ==
+= Am nevoie de un certificat digital? = Da. Autorizarea cu ANAF necesită un Certificat Digital Calificat (token) valid, înregistrat în contul tău SPV.
+
+= Acest plugin este gratuit? = Da, acest plugin este complet gratuit și open-source. Se conectează direct la ANAF fără servicii terțe sau abonamente.
+
+= Funcționează cu mediul de test ANAF? = Da. Activează „Test Mode (Sandbox)” în setări pentru a folosi API-ul de test ANAF înainte de a emite facturi reale.
+
+= Ce format de factură generează? = Plugin-ul generează facturi XML UBL 2.1 conform standardului RO-CIUS solicitat de ANAF.
+
+= Îl pot folosi pentru facturi B2C? = Plugin-ul este conceput în principal pentru facturarea B2B, conform legislației române. Facturile B2C pot fi generate, dar transmiterea lor către ANAF poate să nu fie obligatorie, în funcție de reglementările curente.
+
+= Ce se întâmplă dacă ANAF respinge o factură? = Plugin-ul monitorizează statusul și adaugă note la comandă când o factură este validată sau respinsă. Dacă este respinsă, poți vedea eroarea, corecta datele și retrimite factura.
+
+== Jurnal Modificări (Changelog) ==
+= 1.0.2 =
+
+S-a corectat „text domain” pentru a corespunde cu numele plugin-ului.
+
+Îmbunătățiri pentru conformitatea cu Directorul de Module WordPress.org.
+
+= 1.0.1 =
+
+Consolidarea securității (verificare nonce, securizare output).
+
+S-a adăugat trimiterea automată a facturii la finalizarea comenzii (Auto-Pilot).
+
+Îmbunătățirea conformității PHPCS pentru standardele WordPress.org.
+
+= 1.0.0 =
+
+Lansare inițială.
+
+Autentificare OAuth2 cu ANAF SPV.
+
+Generare XML UBL 2.1.
+
+Trimitere facturi manuală și automată.
+
+Verificare status și descărcare ZIP.
+
+== Politica de Confidențialitate ==
+Acest plugin:
+
+Stochează token-urile OAuth securizat în baza de date WordPress.
+
+Trimite datele facturii direct către ANAF (nu către servere terțe).
+
+Nu colectează și nu transmite date către dezvoltatorii plugin-ului.
+
+Stochează fișierele XML generate și răspunsurile ANAF în folderul wp-content/uploads.
+
+
+
+
+
+
+=== e-Factura for WooCommerce ===
 Contributors: creativdigital
 Tags: woocommerce, anaf, efactura, invoice, romania
 Requires at least: 5.8
